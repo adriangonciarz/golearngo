@@ -59,3 +59,28 @@ func TestCanSignalPrisoner(t *testing.T) {
 		}
 	}
 }
+
+func TestCanFreePrisoner(t *testing.T) {
+	tables := []struct {
+		knightIsAwake   bool
+		archerIsAwake   bool
+		prisonerIsAwake bool
+		hasHerDog       bool
+		canFreePrisoner bool
+	}{
+		{true, false, true, true, true},
+		{true, false, false, true, true},
+		{false, false, true, false, true},
+		{false, false, true, true, true},
+
+		{false, false, false, false, false},
+		{true, true, true, false, false},
+	}
+
+	for _, table := range tables {
+		canSpy := CanFreePrisoner(table.knightIsAwake, table.archerIsAwake, table.prisonerIsAwake, table.hasHerDog)
+		if canSpy != table.canFreePrisoner {
+			t.Error()
+		}
+	}
+}

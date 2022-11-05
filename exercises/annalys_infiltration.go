@@ -24,3 +24,13 @@ func CanSignalPrisoner(archerIsAwake, prisonerIsAwake bool) bool {
 		return false
 	}
 }
+
+func CanFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent bool) bool {
+	if !archerIsAwake && petDogIsPresent {
+		return true
+	} else if !(archerIsAwake || knightIsAwake) && prisonerIsAwake {
+		return true
+	} else {
+		return false
+	}
+}
