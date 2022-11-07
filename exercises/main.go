@@ -1,4 +1,0 @@
-package exercises
-
-func main() {
-}
